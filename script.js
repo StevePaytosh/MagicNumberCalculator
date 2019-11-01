@@ -1,6 +1,15 @@
-var leading_team="A";
+//var leading_team="A";
+
+var MagicNumberCalculatorViewModel = function()
+{
+	this.totalGames: ko.observable("162");
+}
+
 $(document).ready(function(){
   
+  ko.applyBindings(new MagicNumberCalculatorViewModel() );
+  
+  /*
   $("#calculate").on("click", function(){
      
   var values=getFormValues();
@@ -13,7 +22,7 @@ $(document).ready(function(){
    $("#clear").on("click", function(){
     $("#result").html("");
   })
- 	
+ 	*/
   
 });  
 
