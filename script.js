@@ -2,52 +2,37 @@
 
 var MagicNumberCalculatorViewModel = function()
 {
-	this.totalGames: ko.observable("162");
+	this.totalGames = ko.observable("163");
+	this.teamAWins = ko.observable("wins");
+	this.teamALosses = ko.observable("losses");
+	this.teamBWins= ko.observable("wins");
+	this.teamBLosses=ko.observable("losses");
+	this.teamAName=ko.observable("Team A");
+	this.teamBName=ko.observable("Team B");
+	this.magicNumberDisplay=ko.observable("");
+	this.readyToCalculate=ko.observable(true);
+	this.shouldShowResults=ko.observable(false);
+	
+	this.calculate = function(){ this.magicNumberDisplay(calculateMagicNumber());};
 }
 
 $(document).ready(function(){
   
   ko.applyBindings(new MagicNumberCalculatorViewModel() );
-  
-  /*
-  $("#calculate").on("click", function(){
-     
-  var values=getFormValues();
-  var results=calculateMagicNumber(values);
-    
-    
-    $("#result").html("Magic Number <br>" + "Team " + leading_team + ": "  + results);
-  })
-  
-   $("#clear").on("click", function(){
-    $("#result").html("");
-  })
- 	*/
-  
+ 
 });  
 
-function getFormValues()
-{
-    var values=[];
-    values.push( document.getElementById("total_games").value);
-    values.push( document.getElementById("team_a_wins").value);
-    values.push( document.getElementById("team_a_losses").value);
-    values.push( document.getElementById("team_b_wins").value);
-    values.push( document.getElementById("team_b_losses").value);
-  return values;
-}
 
-function getElementValue(elementID)
-{
-  return document.getElementById(elementID).value;
-}
 
-function calculateMagicNumber(values)
+function calculateMagicNumber()
 {
+	/*
   console.log("total games: " + values[0]);
   console.log("Team A Wins: "+ values[1]);
   console.log("Team B Losses: "+ values[4]);
   return values[0]-values[1]-values[4]+1; 
+  */
+  return "Magic Number is x";
 }
 
 function runTest(){

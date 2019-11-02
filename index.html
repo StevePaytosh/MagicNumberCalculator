@@ -1,33 +1,35 @@
 <head>
 	<script src="http://www.w3schools.com/lib/w3data.js"></script>
-	  <script src="jquery-3.1.0.js"></script>	
-      <script type="text/javascript" src="script.js" ></script>
-	  <script type="text/javascript" src="knockout-3.5.0"></script>
+      <script src="jquery-3.1.0.js"></script>	
+	  <script src="knockout-3.5.0.js"></script>
+	  <script type="text/javascript" src="script.js" ></script>
 	  <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 
-<div id="result"></div>
+<div data-bind="text: magicNumberDisplay"></div>
 <div class="team-input">
-<h3> GAMES PER SEASON </h3> <br>
+<h3> GAMES PER SEASON </h3>
 <input type="text" data-bind="value: totalGames" class="input-box" id="total_games" />
 </div>
 <p>
-  <div class="team-input" id="team-a">
-<h3> TEAM A </h3> <br>
-<input type="text" value="wins" class="input-box" id="team_a_wins">
- <input type="text" value="losses" class="input-box" id="team_a_losses">
+  <div class="team-input">
+  <h3><span data-bind="text: teamAName"></span></h3>
+  <input type="text" data-bind="value: teamAName" class="input-box">
+<input type="text" data-bind="value: teamAWins" class="input-box">
+ <input type="text" data-bind="value: teamALosses" class="input-box">
 </div>
   <p>
-    <div class="team-input" id="team-b">
-  <h3> TEAM B </h3> <br>
-<input type="text" value="wins" class="input-box" id="team_b_wins">
- <input type="text" value="losses" class="input-box" id="team_b_losses">
+    <div class="team-input">
+  <h3> <span data-bind="text: teamBName"></span> </h3>
+  <input type="text" data-bind="value: teamBName" class="input-box">
+<input type="text" data-bind="value: teamBWins" class="input-box">
+ <input type="text" data-bind="value: teamBLosses" class="input-box">
 </div>
   <p>
     
     <div class="button-box">
-    <input type="button" value="calculate" id="calculate">
-     <input type="button" value="clear" id="clear">
+    <input type="button" value="calculate" data-bind="visible: readyToCalculate, click: calculate">
+     <input type="button" value="clear" data-bind="">
 </div>
   
