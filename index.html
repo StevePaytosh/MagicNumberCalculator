@@ -7,7 +7,10 @@
 </head>
 <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 
-<div data-bind="text: magicNumberDisplay"></div>
+<div class="team-input" data-bind="visible: magicNumberDisplay().length>0">
+<h3 data-bind="text: magicNumberDisplay"></h3>
+</div>
+
 <div class="team-input">
 <h3> GAMES PER SEASON </h3>
 <input type="text" data-bind="value: totalGames" class="input-box" id="total_games" />
@@ -30,6 +33,6 @@
     
     <div class="button-box">
     <input type="button" value="calculate" data-bind="visible: readyToCalculate, click: calculate">
-     <input type="button" value="clear" data-bind="">
+     <input type="button" value="clear" data-bind="click: clear">
 </div>
   

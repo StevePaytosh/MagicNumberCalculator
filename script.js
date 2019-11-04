@@ -1,8 +1,7 @@
-//var leading_team="A";
 
 var MagicNumberCalculatorViewModel = function()
 {
-	this.totalGames = ko.observable("163");
+	this.totalGames = ko.observable("Total Games");
 	this.teamAWins = ko.observable("wins");
 	this.teamALosses = ko.observable("losses");
 	this.teamBWins= ko.observable("wins");
@@ -11,9 +10,10 @@ var MagicNumberCalculatorViewModel = function()
 	this.teamBName=ko.observable("Team B");
 	this.magicNumberDisplay=ko.observable("");
 	this.readyToCalculate=ko.observable(true);
-	this.shouldShowResults=ko.observable(false);
 	
-	this.calculate = function(){ this.magicNumberDisplay(calculateMagicNumber());};
+	this.calculate = function(){ calculateMagicNumber(this);};
+	this.clear = function() { clear(this); };
+	
 }
 
 $(document).ready(function(){
@@ -22,23 +22,33 @@ $(document).ready(function(){
  
 });  
 
-
-
-function calculateMagicNumber()
-{
-	/*
-  console.log("total games: " + values[0]);
-  console.log("Team A Wins: "+ values[1]);
-  console.log("Team B Losses: "+ values[4]);
-  return values[0]-values[1]-values[4]+1; 
-  */
-  return "Magic Number is x";
+function calculateMagicNumber(vm)
+{ 
+	if(validate(vm))
+	{
+		var res=vm.teamAName()+"'s Magic Number is "+(vm.totalGames()-vm.teamAWins()-vm.teamBLosses()+1);
+		vm.magicNumberDisplay(res);  
+	}
 }
 
-function runTest(){
-  document.getElementById("total_games").value=162;
-  document.getElementById("team_a_wins").value=83;    
-  document.getElementById("team_a_losses").value=59;  
-  document.getElementById("team_b_wins").value=76;
-  document.getElementById("team_b_losses").value=66;
-};
+function clear(vm)
+{
+ vm.totalGames("Total Games");
+ vm.teamAWins("wins")
+ vm.teamALosses("losses");
+ vm.teamBWins("wins");
+ vm.teamBLosses("losses");
+ vm.teamAName("Team A");
+ vm.teamBName("Team B");
+ vm.magicNumberDisplay("");
+ vm.readyToCalculate(true);
+}
+
+function validate(vm)
+{
+	if(isNaN(vm.totalGames()) ) {vm.magicNumberDisplay("Invalid Input: "+ vm.totalGames()); return false;}
+	if(isNaN(vm.teamAWins()) ) {vm.magicNumberDisplay("Invalid Input: "+ vm.teamAWins()); return false;}
+	if(isNaN(vm.teamBLosses()) ) {vm.magicNumberDisplay("Invalid Input: "+ vm.teamBLosses()); return false;}
+	
+	return true;
+}
